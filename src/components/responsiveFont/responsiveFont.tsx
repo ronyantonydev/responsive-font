@@ -1,10 +1,9 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import Style from "./responsiveFontStyles.tsx";
+import React, { useState } from "react";
+import { useEffect } from "react/cjs/react.production.min";
 
 interface FontProps {
   className?: string;
-  font?: {
+  text?: {
     minfontSize: string;
     maxfontSize: string;
     minScreenSize?: string;
@@ -17,37 +16,28 @@ interface FontProps {
   children?: React.ReactNode;
 }
 
-function useWindowSize() {
-  const [size, setSize] = useState(0);
-  useEffect(() => {
-    function updateSize() {
-      setSize(window.innerWidth);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-  return size;
-}
-
 const ResponsiveFont = React.memo(
-  ({ font, className, children }: FontProps) => {
-    const width = useWindowSize();
+  ({ text, className, children }: FontProps) => {
+    // const remValue = window.getComputedStyle(document.documentElement)[
+    //   "font-size"
+    // ];
+    // console.log(remValue);
     return (
-      <Style
-        className={className}
-        screenSize={width}
-        minfontSize={font?.minfontSize}
-        maxfontSize={font?.maxfontSize}
-        minScreenSize={font?.minScreenSize}
-        maxScreenSize={font?.maxScreenSize}
-        fontWeight={font?.fontWeight}
-        tag={font?.tag}
-        color={font?.color}
-        fontFamily={font?.fontFamily}
-      >
-        {children}
-      </Style>
+      <div>
+        <div
+          style={{
+            fontSize: `clamp(${text.minfontSize},calc(${
+              text.minfontSize
+            } + ((100vw - ${parseFloat(text.minScreenSize)}px) / (${parseFloat(
+              text.maxScreenSize
+            )} - ${parseFloat(text.minScreenSize)})) * (${parseFloat(
+              text.maxfontSize
+            )} - ${parseFloat(text.minfontSize)})*16), ${text.maxfontSize})`
+          }}
+        >
+          {children}
+        </div>
+      </div>
     );
   }
 );

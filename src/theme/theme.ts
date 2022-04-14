@@ -8,8 +8,10 @@ export const CursiveLarge = {
 };
 
 export const HeadingFont = {
+  basefontSize: "16px",
   minfontSize: "2rem",
   maxfontSize: "4rem",
+  fontFamily: "afa",
   minScreenSize: "320",
   maxScreenSize: "1560",
   color: "#746A80"
