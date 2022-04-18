@@ -10,18 +10,18 @@ import {
 export default function IndexPage() {
   return (
     <div>
-      <ResponsiveFont text={CursiveLarge}>
-        Responsive text please resize the screen{" "}
+      <ResponsiveFont font={CursiveLarge}>
+        Responsive font please resize the screen
       </ResponsiveFont>
-      <Text fontSize="5rem">Responsive text please resize the screen </Text>
-      <ResponsiveFont text={HeadingFont}>
-        Responsive text please resize the screen{" "}
+      <Text fontSize="5rem">Responsive font please resize the screen </Text>
+      <ResponsiveFont font={HeadingFont}>
+        Responsive font please resize the screen
       </ResponsiveFont>
-      <ResponsiveFont text={HeadingSmall}>
-        Responsive text please resize the screen{" "}
+      <ResponsiveFont font={HeadingSmall}>
+        Responsive font please resize the screen
       </ResponsiveFont>
-      <ResponsiveFont text={NormalFont}>
-        Responsive text please resize the screen{" "}
+      <ResponsiveFont font={NormalFont}>
+        Responsive font please resize the screen
       </ResponsiveFont>
     </div>
   );
