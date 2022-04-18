@@ -1,45 +1,29 @@
-import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.production.min";
+import React from "react";
 
 interface FontProps {
-  className?: string;
-  text?: {
-    minfontSize: string;
-    maxfontSize: string;
-    minScreenSize?: string;
-    maxScreenSize?: string;
-    fontWeight?: string;
-    tag?: string;
-    color?: string;
-    fontFamily?: string;
-  };
+  fontSize?: any;
   children?: React.ReactNode;
 }
 
-const ResponsiveFont = React.memo(
-  ({ text, className, children }: FontProps) => {
-    // const remValue = window.getComputedStyle(document.documentElement)[
-    //   "font-size"
-    // ];
-    // console.log(remValue);
-    return (
-      <div>
-        <div
-          style={{
-            fontSize: `clamp(${text.minfontSize},calc(${
-              text.minfontSize
-            } + ((100vw - ${parseFloat(text.minScreenSize)}px) / (${parseFloat(
-              text.maxScreenSize
-            )} - ${parseFloat(text.minScreenSize)})) * (${parseFloat(
-              text.maxfontSize
-            )} - ${parseFloat(text.minfontSize)})*16), ${text.maxfontSize})`
-          }}
-        >
-          {children}
-        </div>
-      </div>
-    );
-  }
-);
+const ResponsiveText = React.memo(({ fontSize, children }: FontProps) => {
+  const fontHandler = () => {
+    return ` clamp(calc(${fontSize} * 0.66),
+          calc(
+            (${fontSize} * 0.66) + 
+          ((100vw - 768px) / (1560 - 768)) * 
+          ${parseFloat(fontSize)} * 16 * 0.34),
+      ${fontSize})`;
+  };
 
-export default ResponsiveFont;
+  return (
+    <div
+      style={{
+        fontSize: fontHandler()
+      }}
+    >
+      {children}
+    </div>
+  );
+});
+
+export default ResponsiveText;

@@ -1,4 +1,6 @@
 import ResponsiveFont from "../src/components/responsiveFont/responsiveFont.tsx";
+import Text from "../src/components/responsiveFont/responsiveFont.tsx";
+
 import {
   CursiveLarge,
   HeadingFont,
@@ -11,6 +13,7 @@ export default function IndexPage() {
       <ResponsiveFont text={CursiveLarge}>
         Responsive text please resize the screen{" "}
       </ResponsiveFont>
+      <Text fontSize="5rem">Responsive text please resize the screen </Text>
       <ResponsiveFont text={HeadingFont}>
         Responsive text please resize the screen{" "}
       </ResponsiveFont>
